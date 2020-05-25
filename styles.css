@@ -1,0 +1,69 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
+
+body {
+    /* remove padding and margin to make the background
+    take up the whole screen */
+    padding: 0;
+    margin: 0;
+
+    /* create gradient for background */
+    background: linear-gradient(to right, cornflowerblue, mediumaquamarine);
+}
+
+.calculatorGrid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    /* 4 columns, each 100px wide */
+    grid-template-columns: repeat(4, 100px);
+    /* at min 120px tall max is auto, 5 rows each 100px */
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+.calculatorGrid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.calculatorGrid > button:hover {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+.spanTwo {
+    grid-column: span 2;
+}
+
+.output {
+    grid-column: 1/ -1;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /* display will grow as needed with output */
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+
+    justify-content: space-around;
+    padding: 10px;
+
+    /* if a number becomes too long, it will wrap around to next line*/
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .prevOperand {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
+}
+
+.output .curOperand {
+    color: white;
+    font-size: 2.5rem;
+}
